@@ -5,22 +5,23 @@ import bcryptjs from 'bcryptjs';
 const signUp = async (req, res, next) => {
   const { username, email, password } = req.body;
   try {
-    //checking if user exist already
+    // Check if user already exists
     const existingUser = await User.findOne({ $or: [{ username }, { email }] });
-    if (existingUser)
+    if (existingUser) {
       return next(customError(400, 'Username or email already exists'));
-    //saving the new user
+    }
+
+    // Hash password and save new user
     const hashedPassword = await bcryptjs.hash(password, 10);
     const newUser = new User({ username, email, password: hashedPassword });
-    const savedUser = await newUser.save();
-    
+    await newUser.save();
+
     res.status(201).json({
       success: true,
       message: 'User saved successfully',
-    //   user: savedUser,
     });
   } catch (error) {
-    nest(error)
+    next(error);
   }
 };
 

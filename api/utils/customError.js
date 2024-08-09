@@ -1,6 +1,6 @@
 export const customError = (statusCode, message) => {
-  const err = new Error();
-  err.statusCode = statusCode;
-  err.message = message;
-  return err;
+  const error = new Error();
+  error.statusCode = statusCode;
+  error.message = message;
+  return error;
 };
