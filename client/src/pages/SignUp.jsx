@@ -3,7 +3,7 @@ import { Link, useNavigate} from "react-router-dom";
 
 
 const SignUp = () => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
   const [loading, setLoading] = useState(false)
   const [err, setErr] = useState(null)
   const navigate = useNavigate()
