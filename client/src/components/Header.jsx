@@ -17,12 +17,12 @@ const Header = () => {
             <Link to="/about">About</Link>
           </li>
           <li>
-            {currentUser.username ? (
+            {currentUser && currentUser.username ? (
               <Link to="/profile">
                 <img
                   src={currentUser.profilePicture}
                   alt="profile"
-                  className="w-7 h-7rounded-full object-cover"
+                  className="w-7 h-7 rounded-full object-cover"
                 />
               </Link>
             ) : (
