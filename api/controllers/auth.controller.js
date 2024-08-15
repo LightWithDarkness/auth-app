@@ -53,6 +53,17 @@ const signIn = async (req, res, next) => {
     next(error);
   }
 };
-const signOut = async (req, res, next) => {};
+const signOut = (req, res, next) => {
+
+  if(req.user.id != req.params.id) return next(customError(401,'You can only signout from your user id not others'))
+  try {
+    res
+      .clearCookie('access_token', { httpOnly: true })
+      .status(200)
+      .json({ success: true, message: 'Sign out successful' });
+  } catch (error) {
+    next(error)
+  }
+};
 
 export { signUp, signIn, signOut };

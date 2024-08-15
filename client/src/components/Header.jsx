@@ -5,12 +5,12 @@ const Header = () => {
   const { currentUser } = useSelector((state) => state.user);
   return (
     <div className="bg-cyan-600 text-white">
-      <div className="flex justify-between items-center py-4 px-6">
+      <div className="flex flex-nowrap justify-between items-center py-4 px-6">
         <h1 className="font-semibold text-2xl">
           <Link to="/">Auth App</Link>
         </h1>
         <ul className="flex gap-4 items-center">
-          <li>
+          <li className="hidden sm:inline">
             <Link to="/">Home</Link>
           </li>
           <li>
