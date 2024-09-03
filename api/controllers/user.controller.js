@@ -28,6 +28,12 @@ const updateAccount = async (req, res, next) => {
     );
   try {
     const { username, email, password, profilePicture } = req.body;
+    //checking if username or id is already acquired
+    const existingUser = await User.findOne({ $or: [{ username }, { email }] });
+    if (existingUser) {
+      return next(customError(400, 'Username or email already exists'));
+    }
+    //if email, username exist
     if (password) {
       const hashedPassword = bcryptjs.hashSync(password, 10);
       req.body.password = hashedPassword;
