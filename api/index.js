@@ -6,14 +6,19 @@ import authRoutes from './routes/auth.route.js';
 import userRoutes from './routes/user.route.js';
 import { errorHandler } from './utils/middlewares/errror.handler.js';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
 config();
-const __dirname = path.resolve();
 const app = express();
+//
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+//
 app.use(express.static(path.join(__dirname, 'client/dist')));
-app.get('*', (req, res)=>{
-  res.sendFile(path.join(__dirname, 'client/dist/index.html'));
-})
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'));
+});
+//
 app.use(express.json());
 app.use(cookieParser());
 //Routes
