@@ -13,10 +13,10 @@ const app = express();
 //
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-//
-app.use(express.static(path.join(__dirname, 'client/dist')));
+// Adjusted path for serving static files
+app.use(express.static(path.join(__dirname, '../client/dist')));
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'));
+  res.sendFile(path.resolve(__dirname, '../client/dist', 'index.html'));
 });
 //
 app.use(express.json());
