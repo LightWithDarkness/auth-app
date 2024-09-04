@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <div className=" text-gray-800 w-full h-full">
-      <section className="flex flex-col-reverse md:flex-row md:py-24 items-center justify-between px-10 py-10 ">
+      <section className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row md:py-24  items-center justify-between lg:justify-around px-10 py-10 ">
         <div className="max-w-lg text-center md:text-left">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             Auth<span className="text-green-500">App</span>
