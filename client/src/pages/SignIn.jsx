@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import {  signInFailure, start, sigInSuccess } from "../redux/user/user.slice";
+import { signInFailure, start, sigInSuccess } from "../redux/user/user.slice";
 import { useSelector, useDispatch } from "react-redux";
 import OAuth from "../components/OAuth";
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const SignUp = () => {
   const [user, setUser] = useState({});
@@ -18,7 +19,7 @@ const SignUp = () => {
     e.preventDefault();
     try {
       dispatch(start());
-      const response = await fetch("api/v1/auth/signin", {
+      const response = await fetch(`${apiUrl}/api/v1/auth/signin`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

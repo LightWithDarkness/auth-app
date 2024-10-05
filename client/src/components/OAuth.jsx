@@ -3,6 +3,8 @@ import { app } from "../firebase";
 import { sigInSuccess } from "../redux/user/user.slice.js";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+const apiUrl = import.meta.env.VITE_API_URL;
+
 
 const OAuth = () => {
   const dispatch = useDispatch();
@@ -13,7 +15,7 @@ const OAuth = () => {
       const auth = getAuth(app);
       const result = await signInWithPopup(auth, provider);
       console.log(result)
-      const res = await fetch("/api/v1/auth/google", {
+      const res = await fetch(`${apiUrl}/api/v1/auth/google`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

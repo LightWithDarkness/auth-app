@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
-import { Link, Navigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 
 const Header = () => {
   const { currentUser } = useSelector((state) => state.user);
   return (
-    <div className="bg-green-600 text-white">
+    <div className="bg-cyan-500 text-white">
       <div className="flex flex-nowrap justify-between items-center py-4 px-6">
         <h1 className="font-semibold text-2xl">
           <Link to="/">Auth App</Link>

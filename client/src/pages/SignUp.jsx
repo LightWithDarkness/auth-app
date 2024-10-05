@@ -1,14 +1,13 @@
 import { useState } from "react";
-import { Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import OAuth from "../components/OAuth";
-
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const SignUp = () => {
   const [user, setUser] = useState({});
-  const [loading, setLoading] = useState(false)
-  const [err, setErr] = useState(null)
-  const navigate = useNavigate()
- 
+  const [loading, setLoading] = useState(false);
+  const [err, setErr] = useState(null);
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const newUser = { ...user, [e.target.id]: e.target.value };
@@ -17,9 +16,9 @@ const SignUp = () => {
   const submitUser = async (e) => {
     e.preventDefault();
     try {
-      setLoading(true)
-      setErr(null)
-      const response = await fetch("api/v1/auth/signup", {
+      setLoading(true);
+      setErr(null);
+      const response = await fetch(`${apiUrl}api/v1/auth/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -28,17 +27,16 @@ const SignUp = () => {
       });
 
       const data = await response.json();
-      console.log(data)
-      if(!data.success){
-        setLoading(false)
-        setErr(data)
+      console.log(data);
+      if (!data.success) {
+        setLoading(false);
+        setErr(data);
         return;
       }
-      setLoading(false)
-      navigate('/sign-in')
-
+      setLoading(false);
+      navigate("/sign-in");
     } catch (error) {
-      console.log(error)
+      console.log(error);
       setLoading(false);
       setErr(error);
     }

@@ -17,6 +17,8 @@ import {
   getDownloadURL,
   uploadBytesResumable,
 } from "firebase/storage";
+const apiUrl = import.meta.env.VITE_API_URL;
+
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -68,7 +70,7 @@ const Profile = () => {
       dispatch(start());
       setUpdateSuccess(false);
 
-      const res = await fetch(`/api/v1/user/update/${currentUser._id}`, {
+      const res = await fetch(`${apiUrl}/api/v1/user/update/${currentUser._id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -91,7 +93,7 @@ const Profile = () => {
   const handleDeleteUser = async () => {
     try {
       dispatch(start());
-      const res = await fetch(`/api/v1/user/delete/${currentUser._id}`, {
+      const res = await fetch(`${apiUrl}/api/v1/user/delete/${currentUser._id}`, {
         method: "DELETE",
       });
       const data = await res.json();
@@ -108,9 +110,12 @@ const Profile = () => {
   const handleSignOut = async () => {
     try {
       dispatch(start());
-      const res = await fetch(`/api/v1/auth/signout/${currentUser._id}`, {
-        method: "POST",
-      });
+      const res = await fetch(
+        `${apiUrl}/api/v1/auth/signout/${currentUser._id}`,
+        {
+          method: "POST",
+        }
+      );
       const data = await res.json();
       // console.log(data)
       if (!data.success) {
