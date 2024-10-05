@@ -10,15 +10,6 @@ import { fileURLToPath } from 'url';
 
 config();
 const app = express();
-//
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-// Adjusted path for serving static files
-app.use(express.static(path.join(__dirname, '../client/dist')));
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../client/dist', 'index.html'));
-});
-//
 app.use(express.json());
 app.use(cookieParser());
 //Routes
@@ -27,6 +18,15 @@ app.use('/api/v1/user', userRoutes);
 
 // middlewares
 app.use(errorHandler);
+//
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+// Adjusted path for serving files
+app.use(express.static(path.join(__dirname, '../client/dist')));
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../client/dist', 'index.html'));
+});
+//
 
 const start = async () => {
   try {

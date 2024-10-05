@@ -84,7 +84,7 @@ const About = () => {
   return (
     <div className="min-h-screen bg-white flex flex-col items-center justify-center p-4">
       <div className="w-full max-w-3xl bg-white rounded-lg p-8 mt-5 shadow-[0_4px_6px_rgba(13,138,121,0.2),0_-2px_4px_rgba(13,138,121,0.1),0_2px_4px_rgba(13,138,121,0.2),0_0_10px_rgba(13,138,121,0.15)]">
-        <h1 className="text-4xl font-bold text-teal-700 text-center mb-8">
+        <h1 className="text-4xl font-bold text-cyan-700 text-center mb-8">
           About This App
         </h1>
 
@@ -94,7 +94,7 @@ const About = () => {
           modern web technologies.
         </p>
 
-        <h2 className="text-2xl font-semibold text-teal-600 mb-4">
+        <h2 className="text-2xl font-semibold text-cyan-600 mb-4">
           Technologies Used
         </h2>
         <ul className="list-disc list-inside text-left text-gray-600 mb-8">
@@ -119,7 +119,7 @@ const About = () => {
           </li>
         </ul>
 
-        <h2 className="text-2xl font-semibold text-teal-600 mb-4">Features</h2>
+        <h2 className="text-2xl font-semibold text-cyan-600 mb-4">Features</h2>
         <ul className="list-disc list-inside text-left text-gray-600 mb-8">
           <li>
             <strong>JWT (JSON Web Tokens):</strong> Securely manage user
