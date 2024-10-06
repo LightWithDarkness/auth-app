@@ -17,7 +17,7 @@ app.use(cookieParser());
 //middlewares for cors
 app.use(
   cors({
-    origin: 'https://auth-app-frontend-theta.vercel.app',
+    origin: 'https://mkv-auth-app.vercel.app/',
     credentials: true,
   })
 );
