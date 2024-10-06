@@ -17,7 +17,7 @@ app.use(cookieParser());
 //middlewares for cors
 app.use(
   cors({
-    origin: 'https://mkv-auth-app.vercel.app/',
+    origin: 'https://mkv-auth-app.vercel.app',
     credentials: true,
   })
 );
@@ -34,6 +34,10 @@ app.use('/api/v1/user', userRoutes);
 app.use(errorHandler);
 //
 
+
+app.get('/', (req, res) => {
+  res.send('welcome to mkv-auth-app');
+});
 
 const start = async () => {
   try {
