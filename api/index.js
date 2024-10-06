@@ -18,13 +18,20 @@ app.use(cookieParser());
 app.use(
   cors({
     origin: 'https://mkv-auth-app.vercel.app',
-    credentials: true,
+    credentials: true, 
   })
 );
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  next();
-});
+
+// app.use(
+//   cors({
+//     origin: ['https://mkv-auth-app.vercel.app','*'],
+//     credentials: true,
+//   })
+// );
+// app.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   next();
+// });
 
 //Routes
 app.use('/api/v1/auth', authRoutes);
