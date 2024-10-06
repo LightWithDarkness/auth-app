@@ -9,8 +9,11 @@ import cors from 'cors';
 
 config();
 const app = express();
+<<<<<<< HEAD
 const PORT = process.env.PORT || 3000;
 //build-in middlewares
+=======
+>>>>>>> f89a87fceac75cacfa6e5c8eb447f3013786cea7
 app.use(express.json());
 app.use(cookieParser());
 //middlewares for cors
@@ -32,6 +35,17 @@ app.use('/api/v1/user', userRoutes);
 // middlewares
 app.use(errorHandler);
 //
+<<<<<<< HEAD
+=======
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+// Adjusted path for serving files
+app.use(express.static(path.join(__dirname, '../client/dist')));
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../client/dist', 'index.html'));
+});
+//
+>>>>>>> f89a87fceac75cacfa6e5c8eb447f3013786cea7
 
 const start = async () => {
   try {
